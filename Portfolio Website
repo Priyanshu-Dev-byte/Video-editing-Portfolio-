@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editor Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, rgba(138, 43, 226, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(138, 43, 226, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #8a2be2, #ff1493, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #8a2be2, #ff1493);
+        }
+
+        .about-content {
+            display: grid;
+            gap: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #d0d0d0;
+        }
+
+        .about-content p {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .about-content p:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(138, 43, 226, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            background: rgba(138, 43, 226, 0.1);
+            border-color: #8a2be2;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff1493;
+        }
+
+        .instagram-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .instagram-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .instagram-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .instagram-card:hover::before {
+            left: 100%;
+        }
+
+        .instagram-card:hover {
+            border-color: #8a2be2;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+        }
+
+        .instagram-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .instagram-handle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .instagram-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(240, 148, 51, 0.5);
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            margin-top: 2rem;
+        }
+
+        .experience-card h3 {
+            color: #00ff88;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card p {
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 20, 147, 0.1));
+            border-radius: 20px;
+            margin: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, #8a2be2, #ff1493);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Video Editor</h1>
+            <p class="subtitle">Crafting Stories Through Visual Narratives</p>
+            <p style="font-size: 1.1rem; color: #b0b0b0;">3 Years of Creative Excellence</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8a2be2" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>I've been doing video editing for the past 3 years, and honestly, I'm still learning something new with every project. Each video brings different challenges and creative opportunities, which keeps things exciting for me.</p>
+            
+            <p>I currently run 4 Instagram editing pages where I create edits on movies and series. Managing these pages has taught me a lot about storytelling, pacing, and what makes content engaging. I've experimented with different styles and techniques, from color grading to transitions, and I genuinely enjoy the process of turning raw footage into something compelling.</p>
+            
+            <p>What I love most about editing is the creative freedom it offers. I'm looking forward to learning professional workflows and contributing my skills in a structured environment.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Skills & Tools</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Adobe Premiere Pro</h3>
+                <p>Professional video editing and post-production</p>
+            </div>
+            <div class="skill-card">
+                <h3>After Effects</h3>
+                <p>Motion graphics and visual effects</p>
+            </div>
+            <div class="skill-card">
+                <h3>DaVinci Resolve</h3>
+                <p>Color grading and advanced editing</p>
+            </div>
+            <div class="skill-card">
+                <h3>Figma</h3>
+                <p>UI/UX design and prototyping</p>
+            </div>
+            <div class="skill-card">
+                <h3>Graphic Design</h3>
+                <p>Visual design and branding</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Graphic Design</h2>
+        <div class="experience-card">
+            <h3>UI Design & Creative Work</h3>
+            <p>I'm also working on the UI design for an iOS app in Figma as part of a 4-person team. While I handle graphic design as well, video editing is where my strongest skills lie, and it's what I'm most passionate about.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Instagram Pages</h2>
+        <div class="instagram-section">
+            <div class="instagram-card">
+                <div class="instagram-icon">📱</div>
+                <div class="instagram-handle">@fusionflickedits</div>
+                <p style="color: #b0b0b0;">Movie & Series Edits</p>
+                <a href="https://instagram.com/fusionflickedits" target="_blank" class="instagram-link">Visit Page</a>
+            </div>
+            <div class="instagram-card">
+                <div class="instagram-icon">📱</div>
+                <div class="instagram-handle">@thesillyguy_</div>
+                <p style="color: #b0b0b0;">Creative Content</p>
+                <a href="https://instagram.com/thesillyguy_" target="_blank" class="instagram-link">Visit Page</a>
+            </div>
+            <div class="instagram-card">
+                <div class="instagram-icon">📱</div>
+                <div class="instagram-handle">@cut.andblend</div>
+                <p style="color: #b0b0b0;">Professional Edits</p>
+                <a href="https://instagram.com/cut.andblend" target="_blank" class="instagram-link">Visit Page</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-card">
+            <h3>Freelance Video Editor - Nerds Room</h3>
+            <p>You should choose me because I bring practical freelancing experience alongside my technical skills. Over the past 3-4 months, I've been freelancing as a video editor for Nerds Room, a tech community in Noida, where I create brand promotion and event promotion videos that are featured on their Instagram page. I recently completed a product promotion video for an event organizer, and the client was very satisfied with the results.</p>
+        </div>
+        <div class="experience-card" style="margin-top: 1rem;">
+            <h3>Team Collaboration</h3>
+            <p>My diverse experience has taught me how to collaborate effectively, meet client expectations, and adapt to different project requirements.</p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Let's Create Something Amazing</h2>
+        <p style="font-size: 1.2rem; color: #d0d0d0; margin-bottom: 2rem;">Ready to bring your vision to life through compelling video content</p>
+        <div style="margin-top: 2rem;">
+            <a href="mailto:2003priyanshurathour@gmail.com" class="cta-button" style="margin: 0.5rem;">Email Me</a>
+            <a href="https://instagram.com/_priyanshu__rathour__" target="_blank" class="cta-button" style="margin: 0.5rem;">Instagram</a>
+        </div>
+        <div style="margin-top: 2rem; font-size: 1.1rem; color: #b0b0b0;">
+            <p>📧 2003priyanshurathour@gmail.com</p>
+            <p style="margin-top: 0.5rem;">📱 @_priyanshu__rathour__</p>
+        </div>
+    </section>
+</body>
+</html>
