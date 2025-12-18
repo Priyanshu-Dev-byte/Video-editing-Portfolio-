@@ -71,6 +71,17 @@
             animation: fadeInUp 1s ease-out 0.2s both;
         }
 
+        .current-role {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.2), rgba(255, 20, 147, 0.2));
+            border: 1px solid rgba(138, 43, 226, 0.5);
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-top: 1rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -247,17 +258,76 @@
             border-radius: 15px;
             border: 1px solid rgba(138, 43, 226, 0.2);
             margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(138, 43, 226, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .experience-card.current {
+            border: 2px solid rgba(0, 255, 136, 0.5);
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .experience-card.current::before {
+            content: 'CURRENT ROLE';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .experience-card {
+            position: relative;
         }
 
         .experience-card h3 {
             color: #00ff88;
             font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .role-duration {
+            color: #b0b0b0;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
+            font-style: italic;
         }
 
         .experience-card p {
             line-height: 1.8;
             color: #d0d0d0;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            margin-top: 1rem;
+            padding-left: 0;
+        }
+
+        .experience-card ul li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            line-height: 1.6;
+            color: #d0d0d0;
+        }
+
+        .experience-card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
         }
 
         .cta-section {
@@ -302,6 +372,11 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .experience-card.current::before {
+                font-size: 0.65rem;
+                padding: 0.25rem 0.75rem;
+            }
         }
     </style>
 </head>
@@ -311,6 +386,9 @@
             <h1>Video Editor</h1>
             <p class="subtitle">Crafting Stories Through Visual Narratives</p>
             <p style="font-size: 1.1rem; color: #b0b0b0;">3 Years of Creative Excellence</p>
+            <div class="current-role">
+                🎬 Currently: Part-Time Video Editor @ Nerds Room
+            </div>
         </div>
         <div class="scroll-indicator">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8a2be2" stroke-width="2">
@@ -326,7 +404,7 @@
             
             <p>I currently run 4 Instagram editing pages where I create edits on movies and series. Managing these pages has taught me a lot about storytelling, pacing, and what makes content engaging. I've experimented with different styles and techniques, from color grading to transitions, and I genuinely enjoy the process of turning raw footage into something compelling.</p>
             
-            <p>What I love most about editing is the creative freedom it offers. I'm looking forward to learning professional workflows and contributing my skills in a structured environment.</p>
+            <p>What I love most about editing is the creative freedom it offers. Through my current role at Nerds Room and my personal projects, I'm constantly refining my skills and exploring new creative approaches to visual storytelling.</p>
         </div>
     </section>
 
@@ -390,13 +468,41 @@
 
     <section class="section">
         <h2 class="section-title">Experience</h2>
-        <div class="experience-card">
-            <h3>Freelance Video Editor - Nerds Room</h3>
-            <p>You should choose me because I bring practical freelancing experience alongside my technical skills. Over the past 3-4 months, I've been freelancing as a video editor for Nerds Room, a tech community in Noida, where I create brand promotion and event promotion videos that are featured on their Instagram page. I recently completed a product promotion video for an event organizer, and the client was very satisfied with the results.</p>
+        
+        <div class="experience-card current">
+            <h3>Part-Time Video Editor - Nerds Room</h3>
+            <div class="role-duration">Present</div>
+            <p>Currently working as a part-time video editor for Nerds Room, a growing tech community in Noida. I create engaging promotional content that helps build their brand presence and connects with their community of developers, creators, and innovators.</p>
+            <ul>
+                <li>Create brand promotion videos for Instagram that showcase Nerds Room's mission and events</li>
+                <li>Produce event promotion videos including meetups, hackathons, and tech talks</li>
+                <li>Develop compelling visual narratives that resonate with the tech community</li>
+                <li>Collaborate with the team to maintain consistent brand identity across all video content</li>
+                <li>Manage end-to-end video production from concept to final delivery</li>
+            </ul>
         </div>
-        <div class="experience-card" style="margin-top: 1rem;">
+
+        <div class="experience-card">
+            <h3>Freelance Video Editor - Product Promotions</h3>
+            <div class="role-duration">Recent Project</div>
+            <p>Successfully completed a product promotion video for an event organizer, delivering high-quality content that exceeded client expectations. This project demonstrated my ability to understand client needs and translate them into effective visual communication.</p>
+        </div>
+
+        <div class="experience-card">
+            <h3>Content Creator & Page Manager</h3>
+            <div class="role-duration">3+ Years</div>
+            <p>Built and manage 4 Instagram editing pages focused on movie and series content, growing organic engagement through consistent quality and creative storytelling. This experience has honed my skills in:</p>
+            <ul>
+                <li>Understanding audience preferences and content trends</li>
+                <li>Creating scroll-stopping content optimized for social media</li>
+                <li>Maintaining consistent posting schedules and quality standards</li>
+                <li>Experimenting with various editing styles and techniques</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
             <h3>Team Collaboration</h3>
-            <p>My diverse experience has taught me how to collaborate effectively, meet client expectations, and adapt to different project requirements.</p>
+            <p>My diverse experience has taught me how to collaborate effectively with clients and team members, meet deadlines consistently, adapt to different project requirements, and deliver content that achieves business objectives while maintaining creative excellence.</p>
         </div>
     </section>
 
