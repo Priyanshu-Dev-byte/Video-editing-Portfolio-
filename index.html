@@ -3,83 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Editor Portfolio</title>
+    <title>Priyanshu Rathour | Video Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #1d1d1f;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-blue: #2997ff;
+            --accent-purple: #bf5af2;
+            --accent-pink: #ff375f;
+            --accent-green: #30d158;
+            --accent-orange: #ff9f0a;
+            --gradient-hero: linear-gradient(180deg, #2997ff 0%, #bf5af2 50%, #ff375f 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
-            color: #ffffff;
-            overflow-x: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 48px;
+        }
+
+        .nav-logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
             position: relative;
-            padding: 2rem;
-            background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(90deg, rgba(138, 43, 226, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(138, 43, 226, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(41, 151, 255, 0.15) 0%, transparent 60%);
+            pointer-events: none;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(48, 209, 88, 0.15);
+            border: 1px solid rgba(48, 209, 88, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
         }
 
-        .hero-content {
-            text-align: center;
-            z-index: 1;
-            max-width: 900px;
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
         }
 
-        h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #8a2be2, #ff1493, #00ff88);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInUp 1s ease-out;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
         }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: #b0b0b0;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
-        .current-role {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(45deg, rgba(138, 43, 226, 0.2), rgba(255, 20, 147, 0.2));
-            border: 1px solid rgba(138, 43, 226, 0.5);
-            border-radius: 25px;
-            font-size: 1rem;
-            margin-top: 1rem;
-            animation: fadeInUp 1s ease-out 0.4s both;
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 48px;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         @keyframes fadeInUp {
@@ -93,430 +195,703 @@
             }
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
+        /* Section Styles */
         .section {
-            padding: 5rem 2rem;
+            padding: 100px 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+        .section-header {
             text-align: center;
-            position: relative;
+            margin-bottom: 64px;
         }
 
-        .section-title::after {
+        .section-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        /* Featured Work - Priority Section */
+        .featured-section {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 100px 24px;
+        }
+
+        .featured-grid {
+            display: grid;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .featured-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 48px;
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #8a2be2, #ff1493);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-hero);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
-        .about-content {
-            display: grid;
-            gap: 2rem;
-            line-height: 1.8;
+        .featured-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .featured-card:hover::before {
+            opacity: 1;
+        }
+
+        .featured-card.primary {
+            background: linear-gradient(135deg, rgba(41, 151, 255, 0.08) 0%, rgba(191, 90, 242, 0.08) 100%);
+            border-color: rgba(41, 151, 255, 0.2);
+        }
+
+        .featured-card.primary::before {
+            opacity: 1;
+        }
+
+        .card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .card-badge.hired {
+            background: rgba(48, 209, 88, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(48, 209, 88, 0.3);
+        }
+
+        .card-badge.featured {
+            background: rgba(255, 159, 10, 0.15);
+            color: var(--accent-orange);
+            border: 1px solid rgba(255, 159, 10, 0.3);
+        }
+
+        .card-badge.experience {
+            background: rgba(41, 151, 255, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(41, 151, 255, 0.3);
+        }
+
+        .featured-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .featured-card p {
             font-size: 1.1rem;
-            color: #d0d0d0;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
         }
 
-        .about-content p {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            transition: all 0.3s ease;
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: gap 0.3s ease;
         }
 
-        .about-content p:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(138, 43, 226, 0.4);
-            transform: translateY(-5px);
+        .card-link:hover {
+            gap: 12px;
+        }
+
+        .card-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--bg-primary);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
 
         .skill-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px;
             text-align: center;
             transition: all 0.3s ease;
         }
 
         .skill-card:hover {
-            background: rgba(138, 43, 226, 0.1);
-            border-color: #8a2be2;
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(41, 151, 255, 0.2), rgba(191, 90, 242, 0.2));
+            border-radius: 16px;
+            font-size: 1.8rem;
         }
 
         .skill-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ff1493;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
         }
 
+        .skill-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .skill-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .skill-link:hover {
+            text-decoration: underline;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        /* Instagram Section */
         .instagram-section {
+            background: var(--bg-primary);
+        }
+
+        .instagram-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .instagram-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px;
             text-align: center;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .instagram-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .instagram-card:hover::before {
-            left: 100%;
         }
 
         .instagram-card:hover {
-            border-color: #8a2be2;
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
         }
 
         .instagram-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
         }
 
         .instagram-handle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .instagram-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
         .instagram-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
             background: linear-gradient(45deg, #f09433, #e6683c, #dc2743);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .instagram-link:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(240, 148, 51, 0.5);
+            box-shadow: 0 8px 24px rgba(220, 39, 67, 0.4);
         }
 
-        .experience-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            margin-top: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .experience-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(138, 43, 226, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .experience-card.current {
-            border: 2px solid rgba(0, 255, 136, 0.5);
-            background: rgba(0, 255, 136, 0.05);
-        }
-
-        .experience-card.current::before {
-            content: 'CURRENT ROLE';
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: linear-gradient(45deg, #00ff88, #00cc6a);
-            color: #000;
-            padding: 0.3rem 1rem;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .experience-card {
-            position: relative;
-        }
-
-        .experience-card h3 {
-            color: #00ff88;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-card .role-duration {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .experience-card p {
-            line-height: 1.8;
-            color: #d0d0d0;
-        }
-
-        .experience-card ul {
-            list-style: none;
-            margin-top: 1rem;
-            padding-left: 0;
-        }
-
-        .experience-card ul li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            position: relative;
-            line-height: 1.6;
-            color: #d0d0d0;
-        }
-
-        .experience-card ul li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: #00ff88;
-            font-weight: bold;
-        }
-
+        /* CTA Section */
         .cta-section {
+            padding: 120px 24px;
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 20, 147, 0.1));
-            border-radius: 20px;
-            margin: 2rem;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 60%;
+            background: radial-gradient(ellipse at bottom, rgba(191, 90, 242, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
         }
 
         .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(45deg, #8a2be2, #ff1493);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 500;
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
             transition: all 0.3s ease;
-            margin-top: 1rem;
         }
 
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+        .cta-button.primary {
+            background: var(--accent-blue);
+            color: white;
         }
 
+        .cta-button.primary:hover {
+            background: #1a8aff;
+            transform: scale(1.02);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .nav-links {
+                display: none;
             }
 
-            .subtitle {
-                font-size: 1.2rem;
+            .hero-stats {
+                gap: 32px;
             }
 
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
+            .stat-number {
                 font-size: 2rem;
             }
 
-            .experience-card.current::before {
-                font-size: 0.65rem;
-                padding: 0.25rem 0.75rem;
+            .featured-card {
+                padding: 32px 24px;
             }
+
+            .featured-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Priyanshu Rathour</a>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#skills">Skills</a>
+                <a href="#about">About</a>
+                <a href="#pages">Pages</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Video Editor</h1>
-            <p class="subtitle">Crafting Stories Through Visual Narratives</p>
-            <p style="font-size: 1.1rem; color: #b0b0b0;">3 Years of Creative Excellence</p>
-            <div class="current-role">
-                🎬 Currently: Part-Time Video Editor @ Nerds Room
+        <div class="hero-badge">
+            Available for Opportunities
+        </div>
+        <h1>Video Editor</h1>
+        <p class="hero-subtitle">Crafting compelling visual stories through creative editing and motion design</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Instagram Pages</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Projects Completed</div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8a2be2" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
+    </section>
+
+    <!-- Featured Work Section -->
+    <section class="featured-section" id="work">
+        <div class="section-header">
+            <p class="section-label">Featured Work</p>
+            <h2 class="section-title">Professional Experience</h2>
+        </div>
+        <div class="featured-grid">
+            <!-- Priority 1: Hack With India -->
+            <div class="featured-card primary fade-in">
+                <span class="card-badge featured">⭐ Featured Work</span>
+                <h3>Hack With India</h3>
+                <p>Created promotional reels for India's largest hackathon community. My work was featured on their official Instagram page with full credit in the caption. This collaboration showcased my ability to create engaging content for major tech communities.</p>
+                <a href="https://www.instagram.com/reel/DTvSdVvk9uy/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="card-link">
+                    View Reel
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Priority 2: Currently Hired -->
+            <div class="featured-card fade-in">
+                <span class="card-badge hired">✓ Currently Hired</span>
+                <h3>Part-Time Video Editor</h3>
+                <p>Recently hired as a part-time video editor in January 2026. Working on professional video content with a structured workflow. This role allows me to apply my creative skills while learning industry-standard practices.</p>
+            </div>
+
+            <!-- Priority 3: Nerds Room -->
+            <div class="featured-card fade-in">
+                <span class="card-badge experience">Freelance Experience</span>
+                <h3>Nerds Room - Tech Community</h3>
+                <p>Freelanced as a video editor for Nerds Room, a tech community based in Noida. Created brand promotion and event videos featured on their Instagram page. Recently completed a product promotion video for an event organizer with excellent client feedback.</p>
+            </div>
+
+            <!-- UI Design Work -->
+            <div class="featured-card fade-in">
+                <span class="card-badge experience">Team Project</span>
+                <h3>iOS App UI Design</h3>
+                <p>Currently working on UI design for an iOS app using Figma as part of a four-person team. This experience has strengthened my visual design skills and understanding of user interface principles alongside my video editing work.</p>
+            </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <p>I've been doing video editing for the past 3 years, and honestly, I'm still learning something new with every project. Each video brings different challenges and creative opportunities, which keeps things exciting for me.</p>
-            
-            <p>I currently run 4 Instagram editing pages where I create edits on movies and series. Managing these pages has taught me a lot about storytelling, pacing, and what makes content engaging. I've experimented with different styles and techniques, from color grading to transitions, and I genuinely enjoy the process of turning raw footage into something compelling.</p>
-            
-            <p>What I love most about editing is the creative freedom it offers. Through my current role at Nerds Room and my personal projects, I'm constantly refining my skills and exploring new creative approaches to visual storytelling.</p>
+    <!-- Skills Section -->
+    <section class="section skills-section" id="skills">
+        <div class="section-header">
+            <p class="section-label">Expertise</p>
+            <h2 class="section-title">Skills & Tools</h2>
         </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">Skills & Tools</h2>
         <div class="skills-grid">
-            <div class="skill-card">
+            <div class="skill-card fade-in">
+                <div class="skill-icon">🎬</div>
                 <h3>Adobe Premiere Pro</h3>
-                <p>Professional video editing and post-production</p>
+                <p>Professional video editing, color correction, and multi-track timeline management</p>
             </div>
-            <div class="skill-card">
+            <div class="skill-card fade-in">
+                <div class="skill-icon">✨</div>
                 <h3>After Effects</h3>
-                <p>Motion graphics and visual effects</p>
+                <p>Motion graphics, visual effects, and dynamic animations for engaging content</p>
+                <a href="https://www.instagram.com/reel/DIQhtFIPISZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="skill-link">
+                    View My Work →
+                </a>
             </div>
-            <div class="skill-card">
+            <div class="skill-card fade-in">
+                <div class="skill-icon">🎨</div>
                 <h3>DaVinci Resolve</h3>
-                <p>Color grading and advanced editing</p>
+                <p>Advanced color grading and professional-level video editing capabilities</p>
             </div>
-            <div class="skill-card">
+            <div class="skill-card fade-in">
+                <div class="skill-icon">📐</div>
                 <h3>Figma</h3>
-                <p>UI/UX design and prototyping</p>
+                <p>UI/UX design, prototyping, and collaborative design workflows</p>
             </div>
-            <div class="skill-card">
+            <div class="skill-card fade-in">
+                <div class="skill-icon">🖼️</div>
                 <h3>Graphic Design</h3>
-                <p>Visual design and branding</p>
+                <p>Visual design, branding, and creating cohesive visual identities</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon">📱</div>
+                <h3>Social Media Content</h3>
+                <p>Creating platform-optimized content for Instagram reels and stories</p>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Graphic Design</h2>
-        <div class="experience-card">
-            <h3>UI Design & Creative Work</h3>
-            <p>I'm also working on the UI design for an iOS app in Figma as part of a 4-person team. While I handle graphic design as well, video editing is where my strongest skills lie, and it's what I'm most passionate about.</p>
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+        <div class="section-header">
+            <p class="section-label">About Me</p>
+            <h2 class="section-title">My Journey</h2>
+        </div>
+        <div class="about-content">
+            <p class="fade-in">I've been passionate about video editing for over three years, constantly learning and improving with every project. Each video brings unique challenges and creative opportunities that keep me motivated.</p>
+            <p class="fade-in">I run four Instagram editing pages where I create content focused on movies and series. Managing these pages has taught me storytelling, pacing, and what makes content truly engaging for audiences.</p>
+            <p class="fade-in">What I love most about editing is the creative freedom it offers. I'm excited to bring my skills to a structured environment and contribute to meaningful projects while continuing to grow as a professional.</p>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Instagram Pages</h2>
-        <div class="instagram-section">
-            <div class="instagram-card">
-                <div class="instagram-icon">📱</div>
+    <!-- Instagram Pages Section -->
+    <section class="section instagram-section" id="pages">
+        <div class="section-header">
+            <p class="section-label">My Pages</p>
+            <h2 class="section-title">Instagram Editing Pages</h2>
+        </div>
+        <div class="instagram-grid">
+            <div class="instagram-card fade-in">
+                <div class="instagram-icon">📹</div>
                 <div class="instagram-handle">@fusionflickedits</div>
-                <p style="color: #b0b0b0;">Movie & Series Edits</p>
-                <a href="https://instagram.com/fusionflickedits" target="_blank" class="instagram-link">Visit Page</a>
+                <p class="instagram-desc">Movie & Series Edits</p>
+                <a href="https://instagram.com/fusionflickedits" target="_blank" class="instagram-link">
+                    Visit Page
+                </a>
             </div>
-            <div class="instagram-card">
-                <div class="instagram-icon">📱</div>
+            <div class="instagram-card fade-in">
                 <div class="instagram-handle">@thesillyguy_</div>
-                <p style="color: #b0b0b0;">Creative Content</p>
-                <a href="https://instagram.com/thesillyguy_" target="_blank" class="instagram-link">Visit Page</a>
+                <div class="instagram-icon">🎭</div>
+                <p class="instagram-desc">Creative Content</p>
+                <a href="https://instagram.com/thesillyguy_" target="_blank" class="instagram-link">
+                    Visit Page
+                </a>
             </div>
-            <div class="instagram-card">
-                <div class="instagram-icon">📱</div>
+            <div class="instagram-card fade-in">
+                <div class="instagram-icon">✂️</div>
                 <div class="instagram-handle">@cut.andblend</div>
-                <p style="color: #b0b0b0;">Professional Edits</p>
-                <a href="https://instagram.com/cut.andblend" target="_blank" class="instagram-link">Visit Page</a>
+                <p class="instagram-desc">Professional Edits</p>
+                <a href="https://instagram.com/cut.andblend" target="_blank" class="instagram-link">
+                    Visit Page
+                </a>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Experience</h2>
-        
-        <div class="experience-card current">
-            <h3>Part-Time Video Editor - Nerds Room</h3>
-            <div class="role-duration">Present</div>
-            <p>Currently working as a part-time video editor for Nerds Room, a growing tech community in Noida. I create engaging promotional content that helps build their brand presence and connects with their community of developers, creators, and innovators.</p>
-            <ul>
-                <li>Create brand promotion videos for Instagram that showcase Nerds Room's mission and events</li>
-                <li>Produce event promotion videos including meetups, hackathons, and tech talks</li>
-                <li>Develop compelling visual narratives that resonate with the tech community</li>
-                <li>Collaborate with the team to maintain consistent brand identity across all video content</li>
-                <li>Manage end-to-end video production from concept to final delivery</li>
-            </ul>
-        </div>
-
-        <div class="experience-card">
-            <h3>Freelance Video Editor - Product Promotions</h3>
-            <div class="role-duration">Recent Project</div>
-            <p>Successfully completed a product promotion video for an event organizer, delivering high-quality content that exceeded client expectations. This project demonstrated my ability to understand client needs and translate them into effective visual communication.</p>
-        </div>
-
-        <div class="experience-card">
-            <h3>Content Creator & Page Manager</h3>
-            <div class="role-duration">3+ Years</div>
-            <p>Built and manage 4 Instagram editing pages focused on movie and series content, growing organic engagement through consistent quality and creative storytelling. This experience has honed my skills in:</p>
-            <ul>
-                <li>Understanding audience preferences and content trends</li>
-                <li>Creating scroll-stopping content optimized for social media</li>
-                <li>Maintaining consistent posting schedules and quality standards</li>
-                <li>Experimenting with various editing styles and techniques</li>
-            </ul>
-        </div>
-
-        <div class="experience-card">
-            <h3>Team Collaboration</h3>
-            <p>My diverse experience has taught me how to collaborate effectively with clients and team members, meet deadlines consistently, adapt to different project requirements, and deliver content that achieves business objectives while maintaining creative excellence.</p>
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2 class="cta-title">Let's Create Together</h2>
+            <p class="cta-subtitle">Ready to bring your vision to life through compelling visual stories</p>
+            <div class="cta-buttons">
+                <a href="mailto:2003priyanshurathour@gmail.com" class="cta-button primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M22 7L12 13L2 7"/>
+                    </svg>
+                    Email Me
+                </a>
+                <a href="https://instagram.com/_priyanshu__rathour__" target="_blank" class="cta-button secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="18" cy="6" r="1.5"/>
+                    </svg>
+                    Instagram
+                </a>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>2003priyanshurathour@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>@_priyanshu__rathour__</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="cta-section">
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Let's Create Something Amazing</h2>
-        <p style="font-size: 1.2rem; color: #d0d0d0; margin-bottom: 2rem;">Ready to bring your vision to life through compelling video content</p>
-        <div style="margin-top: 2rem;">
-            <a href="mailto:2003priyanshurathour@gmail.com" class="cta-button" style="margin: 0.5rem;">Email Me</a>
-            <a href="https://instagram.com/_priyanshu__rathour__" target="_blank" class="cta-button" style="margin: 0.5rem;">Instagram</a>
-        </div>
-        <div style="margin-top: 2rem; font-size: 1.1rem; color: #b0b0b0;">
-            <p>📧 2003priyanshurathour@gmail.com</p>
-            <p style="margin-top: 0.5rem;">📱 @_priyanshu__rathour__</p>
-        </div>
-    </section>
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Priyanshu Rathour. Crafted with passion.</p>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
